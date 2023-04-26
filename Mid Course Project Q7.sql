@@ -5,10 +5,10 @@ WITH
 website_session AS
 (
 SELECT DISTINCT
-	a.website_pageview_id,
+    a.website_pageview_id,
     a.website_session_id,
     CASE 
-		WHEN pageview_url = '/lander-1' THEN 'lander-1'
+	WHEN pageview_url = '/lander-1' THEN 'lander-1'
         WHEN pageview_url = '/home' THEN 'home'
     END AS landing_page
 FROM website_pageviews a
@@ -19,8 +19,9 @@ AND utm_campaign = 'nonbrand'
 AND a.website_pageview_id >= 23504
 AND pageview_url IN ('/lander-1','/home')
 )
+
 SELECT
-	landing_page,
+    landing_page,
     sessions,
     to_product/sessions AS homepage_click_rate,
     to_mrfuzzy/to_product AS product_click_rate,
